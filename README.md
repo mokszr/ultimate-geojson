@@ -6,7 +6,7 @@ Ultimate GeoJSON java library to build, parse GeoJSON and more
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Example Usage
 
  
 ```
@@ -54,7 +54,7 @@ See also the list of [contributors](https://github.com/mokszr/ultimate-geojson/g
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
