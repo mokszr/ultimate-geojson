@@ -80,6 +80,7 @@ public class MultiPolygonBuilder extends GeometryBuilder<MultiPolygonDto> {
 
 		builder.append(BuilderConstants.CLOSE_BRACKET);
 
+		buildBbox(builder, multiPolygon.getBbox());
 		endBuilder(builder);
 
 		return builder.toString();

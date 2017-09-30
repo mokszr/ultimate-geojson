@@ -16,7 +16,7 @@ import com.erumi.ugeojson.model.feature.FeatureDto;
  */
 public class FeatureCollectionBuilder extends GeoJSONBuilder<FeatureCollectionDto> {
 
-	private static FeatureCollectionBuilder INSTANCE = new FeatureCollectionBuilder();
+	private static final FeatureCollectionBuilder INSTANCE = new FeatureCollectionBuilder();
 
 	private FeatureCollectionBuilder() {
 	}

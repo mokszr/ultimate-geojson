@@ -38,6 +38,7 @@ public class PointBuilder extends GeometryBuilder<PointDto> {
 		builder.append(BuilderConstants.COORDINATES_SPACE);
 		builder.append(PositionBuilder.getInstance().position(point.getPosition()));
 
+		buildBbox(builder, point.getBbox());
 		endBuilder(builder);
 
 		return builder.toString();
