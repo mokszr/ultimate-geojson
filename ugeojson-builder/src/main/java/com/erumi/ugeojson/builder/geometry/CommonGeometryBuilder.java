@@ -33,6 +33,9 @@ public final class CommonGeometryBuilder {
 		builders.put(GeometryCollectionDto.class, GeometryCollectionBuilder.getInstance());
 	}
 
+	private CommonGeometryBuilder() {
+	}
+
 	/**
 	 * Get suitable GeometryBuilder
 	 * 
@@ -40,7 +43,7 @@ public final class CommonGeometryBuilder {
 	 *            An instance of GeometryDto
 	 * @return
 	 */
-	public static GeometryBuilder<?> getBuilder(GeometryDto geometryDto) {
+	public static GeometryBuilder getBuilder(GeometryDto geometryDto) {
 		if (geometryDto == null) {
 			return null;
 		}
@@ -49,12 +52,13 @@ public final class CommonGeometryBuilder {
 
 	/**
 	 * Find suitable builder and return build result;
+	 * 
 	 * @param geometryDto
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <K extends GeometryDto> String toGeometryGeoJSON(K geometryDto) {
-		GeometryBuilder<K> builder = (GeometryBuilder<K>) getBuilder(geometryDto);
+	public static String toGeometryGeoJSON(GeometryDto geometryDto) {
+		GeometryBuilder builder = getBuilder(geometryDto);
 		if (builder != null) {
 			return builder.toGeoJSON(geometryDto);
 		}

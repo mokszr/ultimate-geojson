@@ -54,6 +54,7 @@ public class MultiLineStringBuilder extends GeometryBuilder<MultiLineStringDto> 
 
 		builder.append(BuilderConstants.CLOSE_BRACKET);
 
+		buildBbox(builder, multiLineString.getBbox());
 		endBuilder(builder);
 
 		return builder.toString();

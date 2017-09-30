@@ -36,6 +36,7 @@ public class LineStringBuilder extends GeometryBuilder<LineStringDto> {
 
 		builder.append(BuilderConstants.CLOSE_BRACKET);
 
+		buildBbox(builder, lineString.getBbox());
 		endBuilder(builder);
 
 		return builder.toString();

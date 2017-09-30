@@ -53,7 +53,8 @@ public class GeometryCollectionBuilder extends GeometryBuilder<GeometryCollectio
 		}
 
 		builder.append(BuilderConstants.CLOSE_BRACKET);
-
+		
+		buildBbox(builder, geometryCollection.getBbox());
 		endBuilder(builder);
 
 		return builder.toString();

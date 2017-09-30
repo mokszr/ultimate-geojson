@@ -47,6 +47,8 @@ public class MultiPointBuilder extends GeometryBuilder<MultiPointDto> {
 		}
 
 		builder.append(BuilderConstants.CLOSE_BRACKET);
+		
+		buildBbox(builder, multiPoint.getBbox());
 		endBuilder(builder);
 		return builder.toString();
 	}

@@ -65,6 +65,7 @@ public class PolygonBuilder extends GeometryBuilder<PolygonDto> {
 
 		builder.append(BuilderConstants.CLOSE_BRACKET);
 
+		buildBbox(builder, polygon.getBbox());
 		endBuilder(builder);
 
 		return builder.toString();
