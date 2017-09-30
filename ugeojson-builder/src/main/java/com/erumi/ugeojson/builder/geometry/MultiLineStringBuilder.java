@@ -23,7 +23,7 @@ public class MultiLineStringBuilder extends GeometryBuilder<MultiLineStringDto> 
 	}
 
 	@Override
-	public String toGeometryGeoJSON(MultiLineStringDto multiLineString) {
+	public String toGeoJSON(MultiLineStringDto multiLineString) {
 		if (multiLineString == null || multiLineString.getLines() == null || multiLineString.getLines().isEmpty()) {
 			return BuilderConstants.NULL_VALUE;
 		}

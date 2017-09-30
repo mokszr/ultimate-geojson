@@ -1,6 +1,5 @@
 package com.erumi.ugeojson.model.geometry;
 
-import com.erumi.ugeojson.model.GeoJSONObjectDto;
 import com.erumi.ugeojson.model.GeoJSONObjectTypeEnum;
 import com.erumi.ugeojson.model.PositionDto;
 
@@ -8,7 +7,7 @@ import com.erumi.ugeojson.model.PositionDto;
  * @author moksuzer
  *
  */
-public class PointDto extends GeoJSONObjectDto implements GeometryDto {
+public class PointDto extends GeometryDto {
 
 	private static final long serialVersionUID = 1L;
 

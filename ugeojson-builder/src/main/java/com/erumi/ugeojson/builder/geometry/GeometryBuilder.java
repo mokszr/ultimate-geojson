@@ -3,8 +3,8 @@ package com.erumi.ugeojson.builder.geometry;
 import java.util.List;
 
 import com.erumi.ugeojson.builder.common.BuilderConstants;
+import com.erumi.ugeojson.builder.common.GeoJSONBuilder;
 import com.erumi.ugeojson.builder.exception.InvalidPolygonDtoException;
-import com.erumi.ugeojson.model.GeoJSONObjectTypeEnum;
 import com.erumi.ugeojson.model.PositionDto;
 import com.erumi.ugeojson.model.geometry.GeometryDto;
 import com.erumi.ugeojson.model.geometry.LineStringDto;
@@ -15,22 +15,18 @@ import com.erumi.ugeojson.model.geometry.PolygonDto;
  *
  * @param <T>
  */
-public abstract class GeometryBuilder<T extends GeometryDto> {
-	
+public abstract class GeometryBuilder<T extends GeometryDto> extends GeoJSONBuilder<T> {
+
 	private static final int CORRECTABLE_LINEAR_RING_SIZE = 3;
-	
+
 	/**
 	 * Convert geometryDto object to GeoJSON geometry string.
-	 * @param geometry
+	 * 
+	 * @param geometry GeometryDto object to be converted to GeoJSON
 	 * @return
 	 */
-	public abstract String toGeometryGeoJSON(T geometry);
-
-	protected void buildTypePart(StringBuilder builder, GeoJSONObjectTypeEnum type) {
-		builder.append(BuilderConstants.TYPE_SPACE);
-		builder.append(BuilderConstants.DOUBLE_QUOTE).append(type.name()).append(BuilderConstants.DOUBLE_QUOTE);
-		builder.append(BuilderConstants.COMMA_NEWLINE);
-	}
+	@Override
+	public abstract String toGeoJSON(T geometry);
 
 	protected void buildLineStringPositions(StringBuilder builder, LineStringDto lineStringDto) {
 		List<PositionDto> positions = lineStringDto.getPositions();
@@ -45,7 +41,7 @@ public abstract class GeometryBuilder<T extends GeometryDto> {
 			}
 		}
 	}
-	
+
 	protected void checkAndCorrectLinearRing(PolygonDto polygon) {
 		List<LineStringDto> linearRings = polygon.getLinearRings();
 		for (LineStringDto lineStringDto : linearRings) {
@@ -59,17 +55,6 @@ public abstract class GeometryBuilder<T extends GeometryDto> {
 				positions.add(new PositionDto(firstPosition));
 			}
 		}
-	}
-	
-	protected void endBuilder(StringBuilder builder) {
-		builder.append(BuilderConstants.NEWLINE);
-		builder.append(BuilderConstants.CLOSE_CURLY_BRACE);
-	}
-
-	protected StringBuilder initializeBuilder() {
-		StringBuilder builder = new StringBuilder(BuilderConstants.OPEN_CURLY_BRACE);
-		builder.append(BuilderConstants.NEWLINE);
-		return builder;
 	}
 
 }

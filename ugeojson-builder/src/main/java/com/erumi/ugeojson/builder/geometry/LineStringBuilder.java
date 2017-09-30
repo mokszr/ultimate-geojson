@@ -20,7 +20,7 @@ public class LineStringBuilder extends GeometryBuilder<LineStringDto> {
 	}
 
 	@Override
-	public String toGeometryGeoJSON(LineStringDto lineString) {
+	public String toGeoJSON(LineStringDto lineString) {
 		if (lineString == null || lineString.getPositions() == null || lineString.getPositions().isEmpty()) {
 			return BuilderConstants.NULL_VALUE;
 		}

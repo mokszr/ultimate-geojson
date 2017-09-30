@@ -27,7 +27,7 @@ public class GeometryCollectionBuilderShould {
 		
 		GeometryCollectionDto geometryCollection = new GeometryCollectionDto();
 		geometryCollection.setGeometries(Arrays.asList(point,line));
-		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeometryGeoJSON(geometryCollection);
+		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeoJSON(geometryCollection);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"GeometryCollection\",\n\"geometries\": [{\n\"type\": \"Point\",\n\"coordinates\": [101.2471, 37.2368]\n},{\n\"type\": \"LineString\",\n\"coordinates\": [\n [101.01, 58.0147],\n [24.014, 19.364]\n]\n}]\n}"));
 	}
 	
@@ -53,7 +53,7 @@ public class GeometryCollectionBuilderShould {
 		
 		GeometryCollectionDto geometryCollection = new GeometryCollectionDto();
 		geometryCollection.setGeometries(Arrays.asList(lineString,polygon));
-		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeometryGeoJSON(geometryCollection);
+		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeoJSON(geometryCollection);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"GeometryCollection\",\n\"geometries\": [{\n\"type\": \"MultiPoint\",\n\"coordinates\": [\n[32.123, 24.587],\n[36.1478, 29.3645]\n]\n},{\n\"type\": \"Polygon\",\n\"coordinates\": [\n[\n [32.123, 24.587],\n [36.1478, 29.3645],\n [44.44, 45.0, 55.0],\n [32.123, 24.587]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778],\n [34.0, 45.0, 15.78],\n [12.2365, -14.8987]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778],\n [10.44, 58.0, 55.0],\n [12.2365, -14.8987]\n]\n]\n}]\n}"));
 	}
 	
@@ -61,7 +61,7 @@ public class GeometryCollectionBuilderShould {
 	build_empty_geometry_list(){
 		GeometryCollectionDto geometryCollection = new GeometryCollectionDto();
 		geometryCollection.setGeometries(Collections.emptyList());
-		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeometryGeoJSON(geometryCollection);
+		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeoJSON(geometryCollection);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"GeometryCollection\",\n\"geometries\": []\n}"));
 	}
 	
@@ -69,7 +69,7 @@ public class GeometryCollectionBuilderShould {
 	build_null_geometry_list(){
 		GeometryCollectionDto geometryCollection = new GeometryCollectionDto();
 		assertThat(geometryCollection.getGeometries(), nullValue());
-		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeometryGeoJSON(geometryCollection);
+		String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeoJSON(geometryCollection);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"GeometryCollection\",\n\"geometries\": []\n}"));
 	}
 	 

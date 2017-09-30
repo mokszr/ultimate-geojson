@@ -2,14 +2,13 @@ package com.erumi.ugeojson.model.geometry;
 
 import java.util.List;
 
-import com.erumi.ugeojson.model.GeoJSONObjectDto;
 import com.erumi.ugeojson.model.GeoJSONObjectTypeEnum;
 
 /**
  * @author moksuzer
  *
  */
-public class MultiPolygonDto extends GeoJSONObjectDto implements GeometryDto {
+public class MultiPolygonDto extends GeometryDto {
 
 	private static final long serialVersionUID = 1L;
 

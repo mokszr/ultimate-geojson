@@ -22,7 +22,7 @@ public class PolygonBuilderShould {
 		LineStringDto lineString2 = new LineStringDto(Arrays.asList(new PositionDto(12.2365, -14.8987),new PositionDto(63.254, 28.778)));
 		
 		polygon.setLinearRings(Arrays.asList(lineString1,lineString2));
-		PolygonBuilder.getInstance().toGeometryGeoJSON(polygon);
+		PolygonBuilder.getInstance().toGeoJSON(polygon);
 	}
 	
 	@Test public void
@@ -38,7 +38,7 @@ public class PolygonBuilderShould {
 		lineString3.getPositions().add(new PositionDto(10.44,58,55));
 		
 		polygon.setLinearRings(Arrays.asList(lineString1,lineString2,lineString3));
-		String geometryGeoJSON = PolygonBuilder.getInstance().toGeometryGeoJSON(polygon);
+		String geometryGeoJSON = PolygonBuilder.getInstance().toGeoJSON(polygon);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"Polygon\",\n\"coordinates\": [\n[\n [32.123, 24.587],\n [36.1478, 29.3645],\n [44.44, 45.0, 55.0],\n [32.123, 24.587]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778],\n [34.0, 45.0, 15.78],\n [12.2365, -14.8987]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778],\n [10.44, 58.0, 55.0],\n [12.2365, -14.8987]\n]\n]\n}"));
 	}
 	
@@ -49,7 +49,7 @@ public class PolygonBuilderShould {
 		lineString1.getPositions().add(new PositionDto(44.44,45,55));
 		
 		polygon.setLinearRings(Arrays.asList(lineString1));
-		String geometryGeoJSON = PolygonBuilder.getInstance().toGeometryGeoJSON(polygon);
+		String geometryGeoJSON = PolygonBuilder.getInstance().toGeoJSON(polygon);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"Polygon\",\n\"coordinates\": [\n[\n [32.123, 24.587],\n [36.1478, 29.3645],\n [44.44, 45.0, 55.0],\n [32.123, 24.587]\n]\n]\n}"));
 	}
 	

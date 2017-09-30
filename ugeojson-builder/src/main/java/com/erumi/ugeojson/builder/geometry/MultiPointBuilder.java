@@ -23,7 +23,7 @@ public class MultiPointBuilder extends GeometryBuilder<MultiPointDto> {
 	}
 
 	@Override
-	public String toGeometryGeoJSON(MultiPointDto multiPoint) {
+	public String toGeoJSON(MultiPointDto multiPoint) {
 		if (multiPoint == null || multiPoint.getPositions() == null || multiPoint.getPositions().isEmpty()) {
 			return BuilderConstants.NULL_VALUE;
 		}

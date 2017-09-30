@@ -29,7 +29,7 @@ public class MultiPolygonBuilderShould {
 		MultiPolygonDto multiPolygon = new MultiPolygonDto();
 		multiPolygon.setPolygons(Arrays.asList(polygon));
 		
-		MultiPolygonBuilder.getInstance().toGeometryGeoJSON(multiPolygon);
+		MultiPolygonBuilder.getInstance().toGeoJSON(multiPolygon);
 	}
 	
 	@Test public void
@@ -48,7 +48,7 @@ public class MultiPolygonBuilderShould {
 		MultiPolygonDto multiPolygon = new MultiPolygonDto();
 		multiPolygon.setPolygons(Arrays.asList(polygon));
 		
-		String geometryGeoJSON = MultiPolygonBuilder.getInstance().toGeometryGeoJSON(multiPolygon);
+		String geometryGeoJSON = MultiPolygonBuilder.getInstance().toGeoJSON(multiPolygon);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"MultiPolygon\",\n\"coordinates\": [\n[\n[\n [32.123, 24.587],\n [36.1478, 29.3645],\n [44.44, 45.0, 55.0],\n [32.123, 24.587]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778],\n [34.0, 45.0, 15.78],\n [12.2365, -14.8987]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778],\n [10.44, 58.0, 55.0],\n [12.2365, -14.8987]\n]\n]\n]\n}"));
 	}
 	
@@ -63,7 +63,7 @@ public class MultiPolygonBuilderShould {
 		MultiPolygonDto multiPolygon = new MultiPolygonDto();
 		multiPolygon.setPolygons(Arrays.asList(polygon));
 		
-		String geometryGeoJSON = MultiPolygonBuilder.getInstance().toGeometryGeoJSON(multiPolygon);
+		String geometryGeoJSON = MultiPolygonBuilder.getInstance().toGeoJSON(multiPolygon);
 		assertThat(geometryGeoJSON, equalTo("{\n\"type\": \"MultiPolygon\",\n\"coordinates\": [\n[\n[\n [32.123, 24.587],\n [36.1478, 29.3645],\n [44.44, 45.0, 55.0],\n [32.123, 24.587]\n]\n]\n]\n}"));
 	}
 

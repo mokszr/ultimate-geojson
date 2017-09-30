@@ -27,7 +27,7 @@ public class PointBuilder extends GeometryBuilder<PointDto> {
 	 * .erumi.ugeojson.model.geometry.GeometryDto)
 	 */
 	@Override
-	public String toGeometryGeoJSON(PointDto point) {
+	public String toGeoJSON(PointDto point) {
 		if (point == null || point.getPosition() == null || point.getPosition().getNumbers().length == 0) {
 			return BuilderConstants.NULL_VALUE;
 		}
