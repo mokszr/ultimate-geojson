@@ -56,7 +56,7 @@ public final class CommonGeometryBuilder {
 	public static <K extends GeometryDto> String toGeometryGeoJSON(K geometryDto) {
 		GeometryBuilder<K> builder = (GeometryBuilder<K>) getBuilder(geometryDto);
 		if (builder != null) {
-			return builder.toGeometryGeoJSON(geometryDto);
+			return builder.toGeoJSON(geometryDto);
 		}
 		return BuilderConstants.NULL_VALUE;
 	}

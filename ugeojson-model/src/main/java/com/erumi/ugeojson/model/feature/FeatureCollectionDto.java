@@ -19,4 +19,13 @@ public class FeatureCollectionDto extends GeoJSONObjectDto {
 	public GeoJSONObjectTypeEnum getGeoJSONObjectType() {
 		return GeoJSONObjectTypeEnum.FeatureCollection;
 	}
+
+	public List<FeatureDto> getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(List<FeatureDto> features) {
+		this.features = features;
+	}
+	
 }

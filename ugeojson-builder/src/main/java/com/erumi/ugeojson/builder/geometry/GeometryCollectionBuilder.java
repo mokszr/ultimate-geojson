@@ -30,7 +30,7 @@ public class GeometryCollectionBuilder extends GeometryBuilder<GeometryCollectio
 	 * .erumi.ugeojson.model.geometry.GeometryDto)
 	 */
 	@Override
-	public String toGeometryGeoJSON(GeometryCollectionDto geometryCollection) {
+	public String toGeoJSON(GeometryCollectionDto geometryCollection) {
 		if (geometryCollection == null) {
 			return BuilderConstants.NULL_VALUE;
 		}

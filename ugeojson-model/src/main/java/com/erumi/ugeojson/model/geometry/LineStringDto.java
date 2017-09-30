@@ -3,7 +3,6 @@ package com.erumi.ugeojson.model.geometry;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.erumi.ugeojson.model.GeoJSONObjectDto;
 import com.erumi.ugeojson.model.GeoJSONObjectTypeEnum;
 import com.erumi.ugeojson.model.PositionDto;
 
@@ -11,7 +10,7 @@ import com.erumi.ugeojson.model.PositionDto;
  * @author moksuzer
  *
  */
-public class LineStringDto extends GeoJSONObjectDto implements GeometryDto {
+public class LineStringDto extends GeometryDto {
 
 	private static final long serialVersionUID = 1L;
 

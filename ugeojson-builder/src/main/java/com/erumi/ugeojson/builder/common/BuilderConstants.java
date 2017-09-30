@@ -27,5 +27,6 @@ public interface BuilderConstants {
 	public static final String GEOMETRY_SPACE = "\"geometry\": ";
 	public static final String PROPERTIES_SPACE = "\"properties\": ";
 	public static final String ID_SPACE = "\"id\": ";
-	
+	public static final String FEATURES_SPACE = "\"features\": ";
+	public static final String BBOX_SPACE = "\"bbox\": ";
 }

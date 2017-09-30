@@ -1,6 +1,7 @@
 package com.erumi.ugeojson.builder.feature;
 
 import com.erumi.ugeojson.builder.common.BuilderConstants;
+import com.erumi.ugeojson.builder.common.GeoJSONBuilder;
 import com.erumi.ugeojson.builder.geometry.CommonGeometryBuilder;
 import com.erumi.ugeojson.model.GeoJSONObjectTypeEnum;
 import com.erumi.ugeojson.model.feature.FeatureDto;
@@ -11,7 +12,7 @@ import com.erumi.ugeojson.model.feature.FeatureDto;
  * @author moksuzer
  *
  */
-public class FeatureBuilder {
+public class FeatureBuilder extends GeoJSONBuilder<FeatureDto> {
 
 	private static final FeatureBuilder INSTANCE = new FeatureBuilder();
 
@@ -24,20 +25,18 @@ public class FeatureBuilder {
 
 	/**
 	 * Build Feature GeoJSON using FeatureDto object
+	 * 
 	 * @param featureDto
 	 * @return
 	 */
-	public String toFeatureGeoJSON(FeatureDto featureDto) {
+	@Override
+	public String toGeoJSON(FeatureDto featureDto) {
 		if (featureDto == null) {
 			return BuilderConstants.NULL_VALUE;
 		}
-		StringBuilder builder = new StringBuilder(BuilderConstants.OPEN_CURLY_BRACE);
-		builder.append(BuilderConstants.NEWLINE);
-
-		builder.append(BuilderConstants.TYPE_SPACE);
-		builder.append(BuilderConstants.DOUBLE_QUOTE).append(GeoJSONObjectTypeEnum.Feature.name())
-				.append(BuilderConstants.DOUBLE_QUOTE);
-		builder.append(BuilderConstants.COMMA_NEWLINE);
+	
+		StringBuilder builder = initializeBuilder();
+		buildTypePart(builder, GeoJSONObjectTypeEnum.Feature);
 
 		builder.append(BuilderConstants.GEOMETRY_SPACE);
 		if (featureDto.getGeometry() == null) {
@@ -50,16 +49,17 @@ public class FeatureBuilder {
 		builder.append(BuilderConstants.PROPERTIES_SPACE);
 
 		builder.append(featureDto.getProperties());
-		
-		if(featureDto.getId() != null){
+
+		if (featureDto.getId() != null) {
 			builder.append(BuilderConstants.COMMA_NEWLINE);
 			builder.append(BuilderConstants.ID_SPACE);
 			builder.append(featureDto.getId());
 		}
 
-		builder.append(BuilderConstants.NEWLINE);
-		builder.append(BuilderConstants.CLOSE_CURLY_BRACE);
+		buildBbox(builder, featureDto.getBbox());
+		endBuilder(builder);
 
 		return builder.toString();
 	}
+
 }

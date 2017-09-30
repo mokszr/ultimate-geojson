@@ -24,7 +24,7 @@ public class MultiLineStringBuilderShould {
 		
 		multiLine.setLines(Arrays.asList(lineString1,lineString2));
 		
-		String geometryGeoJSON = MultiLineStringBuilder.getInstance().toGeometryGeoJSON(multiLine);
+		String geometryGeoJSON = MultiLineStringBuilder.getInstance().toGeoJSON(multiLine);
 		System.out.println(geometryGeoJSON);
 		assertThat(geometryGeoJSON,equalTo("{\n\"type\": \"MultiLineString\",\n\"coordinates\": [\n[\n [32.123, 24.587],\n [36.1478, 29.3645]\n],\n[\n [12.2365, -14.8987],\n [63.254, 28.778]\n]\n]\n}"));
 	}

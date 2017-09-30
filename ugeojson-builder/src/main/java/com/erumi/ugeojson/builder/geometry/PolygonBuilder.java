@@ -30,7 +30,7 @@ public class PolygonBuilder extends GeometryBuilder<PolygonDto> {
 	 * .erumi.ugeojson.model.geometry.GeometryDto)
 	 */
 	@Override
-	public String toGeometryGeoJSON(PolygonDto polygon) {
+	public String toGeoJSON(PolygonDto polygon) {
 		if (polygon == null || polygon.getLinearRings() == null || polygon.getLinearRings().isEmpty()) {
 			return BuilderConstants.NULL_VALUE;
 		}

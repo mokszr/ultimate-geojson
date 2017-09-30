@@ -31,7 +31,7 @@ public class MultiPolygonBuilder extends GeometryBuilder<MultiPolygonDto> {
 	 * .erumi.ugeojson.model.geometry.GeometryDto)
 	 */
 	@Override
-	public String toGeometryGeoJSON(MultiPolygonDto multiPolygon) {
+	public String toGeoJSON(MultiPolygonDto multiPolygon) {
 		if (multiPolygon == null || multiPolygon.getPolygons() == null || multiPolygon.getPolygons().isEmpty()) {
 			return BuilderConstants.NULL_VALUE;
 		}

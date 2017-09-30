@@ -1,12 +1,14 @@
 package com.erumi.ugeojson.model.geometry;
 
-import java.io.Serializable;
+import com.erumi.ugeojson.model.GeoJSONObjectDto;
 
 /**
- * Each geometry object implements this interface
+ * Each geometry object extends this abstract class
  * @author moksuzer
  *
  */
-public interface GeometryDto extends Serializable {
+public abstract class GeometryDto extends GeoJSONObjectDto {
+ 
+	private static final long serialVersionUID = 1L;
 
 }

@@ -21,8 +21,7 @@ public class FeatureBuilderShould {
 		feature.setId("2423534545");
 		
 		feature.setProperties("{}");
-		String featureGeoJSON = FeatureBuilder.getInstance().toFeatureGeoJSON(feature);
+		String featureGeoJSON = FeatureBuilder.getInstance().toGeoJSON(feature);
 		assertThat(featureGeoJSON, equalTo("{\n\"type\": \"Feature\",\n\"geometry\": {\n\"type\": \"LineString\",\n\"coordinates\": [\n [32.123, 24.587],\n [36.1478, 29.3645]\n]\n},\n\"properties\": {},\n\"id\": 2423534545\n}"));
-		
 	}
 }

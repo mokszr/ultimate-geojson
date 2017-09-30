@@ -21,7 +21,7 @@ public class MultiPointBuilderShould {
 		positions.add(new PositionDto(36.1478, 29.3645));
 		lineString.setPositions(positions);
 
-		String geometryGeoJSON = MultiPointBuilder.getInstance().toGeometryGeoJSON(lineString);
+		String geometryGeoJSON = MultiPointBuilder.getInstance().toGeoJSON(lineString);
 		System.out.println(geometryGeoJSON);
 		assertThat(geometryGeoJSON, equalTo(
 				"{\n\"type\": \"MultiPoint\",\n\"coordinates\": [\n[32.123, 24.587],\n[36.1478, 29.3645]\n]\n}"));
