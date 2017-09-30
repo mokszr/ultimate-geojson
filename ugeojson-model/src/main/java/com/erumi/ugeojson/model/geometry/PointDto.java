@@ -71,7 +71,7 @@ public class PointDto extends GeometryDto {
 		this.position.setElevation(elevation);
 	}
 
-	public double getelevation() {
+	public double getElevation() {
 		return this.position.getElevation();
 	}
 

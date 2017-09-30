@@ -8,6 +8,7 @@
 	<modules>
 		<module>ugeojson-model</module>
 		<module>ugeojson-builder</module>
+		<module>ugeojson-parser</module>
 	</modules>
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>

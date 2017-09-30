@@ -21,7 +21,7 @@ public class FeatureCollectionBuilder extends GeoJSONBuilder<FeatureCollectionDt
 	private FeatureCollectionBuilder() {
 	}
 
-	public static FeatureCollectionBuilder getInsatance() {
+	public static FeatureCollectionBuilder getInstance() {
 		return INSTANCE;
 	}
 
