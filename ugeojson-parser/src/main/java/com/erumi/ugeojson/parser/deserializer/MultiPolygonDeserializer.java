@@ -13,7 +13,6 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -25,8 +24,7 @@ import com.google.gson.reflect.TypeToken;
 public class MultiPolygonDeserializer implements JsonDeserializer<MultiPolygonDto> {
 
 	@Override
-	public MultiPolygonDto deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-			throws JsonParseException {
+	public MultiPolygonDto deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
 
 		MultiPolygonDto dto = new MultiPolygonDto();
 		List<PolygonDto> polygons = new ArrayList<>();
