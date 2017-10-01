@@ -11,30 +11,29 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 
 /**
  * Deserializer for MultiPoint
+ * 
  * @author moksuzer
  *
  */
 public class MultiPointDeserializer implements JsonDeserializer<MultiPointDto> {
 
 	@Override
-	public MultiPointDto deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-			throws JsonParseException {
+	public MultiPointDto deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
 
 		MultiPointDto dto = new MultiPointDto();
 		List<PositionDto> positions = new ArrayList<>();
 		dto.setPositions(positions);
-		
+
 		JsonObject asJsonObject = json.getAsJsonObject();
-	    JsonArray jsonArray = asJsonObject.get("coordinates").getAsJsonArray();
- 		for (int i = 0; i < jsonArray.size(); i++) {
- 			PositionDto position = context.deserialize(jsonArray.get(i), PositionDto.class);
- 			positions.add(position);
+		JsonArray jsonArray = asJsonObject.get("coordinates").getAsJsonArray();
+		for (int i = 0; i < jsonArray.size(); i++) {
+			PositionDto position = context.deserialize(jsonArray.get(i), PositionDto.class);
+			positions.add(position);
 		}
-	    
+
 		return dto;
 	}
 
