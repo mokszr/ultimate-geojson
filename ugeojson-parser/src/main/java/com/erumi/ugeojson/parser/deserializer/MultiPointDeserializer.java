@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.erumi.ugeojson.model.PositionDto;
 import com.erumi.ugeojson.model.geometry.MultiPointDto;
+import com.erumi.ugeojson.parser.util.BoundingBoxParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -33,6 +34,8 @@ public class MultiPointDeserializer implements JsonDeserializer<MultiPointDto> {
 			PositionDto position = context.deserialize(jsonArray.get(i), PositionDto.class);
 			positions.add(position);
 		}
+
+		dto.setBbox(BoundingBoxParser.parseBbox(asJsonObject, context));
 
 		return dto;
 	}
