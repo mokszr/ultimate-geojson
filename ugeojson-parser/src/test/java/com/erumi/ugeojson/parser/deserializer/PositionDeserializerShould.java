@@ -41,5 +41,17 @@ public class PositionDeserializerShould {
 		assertThat(positionList.get(0).getElevation(), equalTo(0.7890780));
 	}
 	
+	@Test public void
+	deserialize_bbox(){
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		Gson gson = gsonBuilder.create();
+		
+		double[] bbox = gson.fromJson("[-10.0, -10.0, 10.0, 10.0]", double[].class);
+
+		assertThat(bbox[0], equalTo(-10.0));
+		assertThat(bbox[2], equalTo(10.0));
+		assertThat(bbox[3], equalTo(10.0));
+	}
+	
 	
 }

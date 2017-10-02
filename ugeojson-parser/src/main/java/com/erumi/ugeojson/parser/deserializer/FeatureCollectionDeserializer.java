@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.erumi.ugeojson.model.feature.FeatureCollectionDto;
 import com.erumi.ugeojson.model.feature.FeatureDto;
+import com.erumi.ugeojson.parser.util.BoundingBoxParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -38,6 +39,8 @@ public class FeatureCollectionDeserializer implements JsonDeserializer<FeatureCo
 			FeatureDto geometryDto = context.deserialize(featureElement, FeatureDto.class);
 			features.add(geometryDto);
 		}
+
+		dto.setBbox(BoundingBoxParser.parseBbox(asJsonObject, context));
 
 		return dto;
 	}

@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 
 import com.erumi.ugeojson.model.PositionDto;
 import com.erumi.ugeojson.model.geometry.PointDto;
+import com.erumi.ugeojson.parser.util.BoundingBoxParser;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -27,7 +28,7 @@ public class PointDeserializer implements JsonDeserializer<PointDto> {
 		PositionDto positionDto = context.deserialize(jsonElement, PositionDto.class);
 		point.setPosition(positionDto);
 
-		JsonElement bboxElement = asJsonObject.get("bbox");
+		point.setBbox(BoundingBoxParser.parseBbox(asJsonObject, context));
 
 		return point;
 	}

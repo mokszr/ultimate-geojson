@@ -7,6 +7,7 @@ import java.util.List;
 import com.erumi.ugeojson.model.GeoJSONObjectTypeEnum;
 import com.erumi.ugeojson.model.geometry.GeometryCollectionDto;
 import com.erumi.ugeojson.model.geometry.GeometryDto;
+import com.erumi.ugeojson.parser.util.BoundingBoxParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -42,6 +43,8 @@ public class GeometryCollectionDeserializer implements JsonDeserializer<Geometry
 			GeometryDto geometryDto = context.deserialize(geometryElement, typeEnum.getDtoClass());
 			geometries.add(geometryDto);
 		}
+
+		dto.setBbox(BoundingBoxParser.parseBbox(asJsonObject, context));
 
 		return dto;
 	}

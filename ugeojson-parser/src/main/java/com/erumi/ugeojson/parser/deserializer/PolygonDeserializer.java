@@ -7,6 +7,7 @@ import java.util.List;
 import com.erumi.ugeojson.model.PositionDto;
 import com.erumi.ugeojson.model.geometry.LineStringDto;
 import com.erumi.ugeojson.model.geometry.PolygonDto;
+import com.erumi.ugeojson.parser.util.BoundingBoxParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -39,7 +40,9 @@ public class PolygonDeserializer implements JsonDeserializer<PolygonDto> {
 			ring.setPositions(positions);
 			rings.add(ring);
 		}
-
+		
+		dto.setBbox(BoundingBoxParser.parseBbox(asJsonObject, context));
+		
 		return dto;
 	}
 
