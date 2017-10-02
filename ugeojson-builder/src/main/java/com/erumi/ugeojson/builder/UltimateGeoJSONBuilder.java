@@ -27,7 +27,16 @@ import com.erumi.ugeojson.model.geometry.PolygonDto;
  */
 public class UltimateGeoJSONBuilder {
 
-	public static String toGeoJSON(GeoJSONObjectDto geoJsonObjectDto) {
+	private static final UltimateGeoJSONBuilder INSTANCE = new UltimateGeoJSONBuilder();
+
+	public static UltimateGeoJSONBuilder getInstance() {
+		return INSTANCE;
+	}
+
+	private UltimateGeoJSONBuilder() {
+	}
+
+	public String toGeoJSON(GeoJSONObjectDto geoJsonObjectDto) {
 		if (geoJsonObjectDto == null) {
 			return BuilderConstants.NULL_VALUE;
 		}
