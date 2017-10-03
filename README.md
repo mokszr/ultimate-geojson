@@ -2,26 +2,59 @@
 
 Ultimate GeoJSON java library to build, parse GeoJSON and more
 
-## Getting Started
+## How To Parse GeoJSON
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Example Usage
-
- 
 ```
-@Test public void
-build_feature(){
-	FeatureDto feature = new FeatureDto();
-	LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645)));
-	feature.setGeometry(lineString1);
-	feature.setId("2423534545");
+String featureGeoJson = "{\"type\": \"Feature\", "
+				+ " \"bbox\": [-10.0, -10.0, 10.0, 10.0],"
+				+ " \"properties\": {}, "
+				+ " \"geometry\":  {        \"type\": \"Point\",       \"coordinates\": [14.244158,   \n47.149861, 0.7890780]    } }";
+
+GeoJSONObjectDto geoJSONObjectDto = UltimateGeoJSONParser.getInstance().parse(featureGeoJson);
+FeatureDto feature = (FeatureDto) geoJSONObjectDto;
+// prints Point
+System.out.println(feature.getGeometry().getGeoJSONObjectType());
+
+```
+
+## How To Build (generate) GeoJSON
+Generate Polygon GeoJson from PolygonDto you populate
+
+```
+PolygonDto polygon = new PolygonDto();
+LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645),new PositionDto(44.44,45,55)));
+				
+polygon.setLinearRings(Arrays.asList(lineString1));
+String geometryGeoJSON = UltimateGeoJSONBuilder.getInstance().toGeoJSON(polygon);
+System.out.println(geometryGeoJSON);
+```
+
+Output:
+```
+{
+"type": "Polygon",
+"coordinates": [
+[
+ [32.123, 24.587],
+ [36.1478, 29.3645],
+ [44.44, 45.0, 55.0],
+ [32.123, 24.587]
+]
+]
+}
+```
+
+Generate Feature GeoJSON
+
+```
+FeatureDto feature = new FeatureDto();
+LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645)));
+feature.setGeometry(lineString1);
+feature.setId("2423534545");
 		
-	feature.setProperties("{}");
-	String featureGeoJSON = FeatureBuilder.getInstance().toGeoJSON(feature);
-	System.out.println(featureGeoJSON);
-	assertThat(featureGeoJSON, equalTo("{\n\"type\": \"Feature\",\n\"geometry\": {\n\"type\": \"LineString\",\n\"coordinates\": [\n [32.123, 24.587],\n [36.1478, 29.3645]\n]\n},\n\"properties\": {},\n\"id\": 2423534545\n}"));
-	}
+feature.setProperties("{}");
+String featureGeoJSON = FeatureBuilder.getInstance().toGeoJSON(feature);
+System.out.println(featureGeoJSON);
 ```
 Output:
 
@@ -40,7 +73,7 @@ Output:
 }
 
 ```
- 
+For detailed documentation visit https://ultimategeojson.wordpress.com/
 
 ## Built With
 
