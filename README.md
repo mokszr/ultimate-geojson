@@ -18,6 +18,7 @@
 	 	- [GeometryCollectionBuilder](#geometrycollectionbuilder)
 	 	- [FeatureBuilder](#featurebuilder)
 	 	- [FeatureCollectionBuilder](#featurecollectionbuilder)
+		- [UltimateGeoJSONBuilder](#ultimategeojsonbuilder)
 	- [Built With](#built-with)
 	- [Authors](#authors)
 	- [License](#license)
@@ -306,6 +307,34 @@ Output:
 }
 ```
 
+#### UltimateGeoJSONBuilder
+You can use `UltimateGeoJSONBuilder` for all types.
+
+```
+FeatureDto feature = new FeatureDto();
+LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645)));
+feature.setGeometry(lineString1);
+feature.setId("2423534545");
+		
+feature.setProperties("{}");
+String featureGeoJSON = UltimateGeoJSONBuilder.getInstance().toGeoJSON(feature);
+```
+Output:
+```
+{
+"type": "Feature",
+"geometry": {
+"type": "LineString",
+"coordinates": [
+ [32.123, 24.587],
+ [36.1478, 29.3645]
+]
+},
+"properties": {},
+"id": 2423534545
+}
+
+```
 
 ## Built With
 
