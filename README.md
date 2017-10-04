@@ -144,9 +144,11 @@ Output:
 #### MultiLineStringBuilder
 ```
 MultiLineStringDto multiLine = new MultiLineStringDto();
-LineStringDto lineString1 = generateLineString(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645));
-LineStringDto lineString2 = generateLineString(new PositionDto(12.2365, -14.8987),new PositionDto(63.254, 28.778));
+LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645)));
+LineStringDto lineString2 = new LineStringDto(Arrays.asList(new PositionDto(12.2365, -14.8987),new PositionDto(63.254, 28.778)));
+		
 multiLine.setLines(Arrays.asList(lineString1,lineString2));
+		
 String geometryGeoJSON = MultiLineStringBuilder.getInstance().toGeoJSON(multiLine);
 ```
 Output:
