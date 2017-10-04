@@ -176,8 +176,34 @@ Output:
 }
 ```
 
-Generate Feature GeoJSON
+#### GeometryCollectionBuilder
+```
+PointDto point = new PointDto(101.2471,37.2368);
+LineStringDto line = new LineStringDto(Arrays.asList(new PositionDto(101.01, 58.0147),new PositionDto(24.014, 19.364)));
+		
+GeometryCollectionDto geometryCollection = new GeometryCollectionDto();
+geometryCollection.setGeometries(Arrays.asList(point,line));
+String geometryGeoJSON = GeometryCollectionBuilder.getInstance().toGeoJSON(geometryCollection);
+System.out.println(geometryGeoJSON);
+```
+Output:
+```
+{
+"type": "GeometryCollection",
+"geometries": [{
+"type": "Point",
+"coordinates": [101.2471, 37.2368]
+},{
+"type": "LineString",
+"coordinates": [
+ [101.01, 58.0147],
+ [24.014, 19.364]
+]
+}]
+}
+```
 
+#### FeatureBuilder
 ```java
 FeatureDto feature = new FeatureDto();
 LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645)));
@@ -205,6 +231,59 @@ Output:
 }
 
 ```
+
+#### FeatureCollectionBuilder
+```
+FeatureDto feature = new FeatureDto();
+LineStringDto lineString1 = new LineStringDto(Arrays.asList(new PositionDto(32.123, 24.587),new PositionDto(36.1478, 29.3645)));
+feature.setGeometry(lineString1);
+feature.setId("2423534545");
+feature.setProperties("{}");
+		
+FeatureDto feature2 = new FeatureDto();
+LineStringDto lineString2 = new LineStringDto(Arrays.asList(new PositionDto(47.47, 59.457),new PositionDto(86.3698, 45.10471)));
+feature2.setGeometry(lineString2);
+feature2.setId("\"myFeatureId\"");
+		
+feature2.setProperties("{\"color\": \"red\"}");
+FeatureCollectionDto featureCollection = new FeatureCollectionDto();
+featureCollection.setFeatures(Arrays.asList(feature,feature2));
+		
+String featureCollectionGeoJSON = FeatureCollectionBuilder.getInstance().toGeoJSON(featureCollection);
+System.out.println(featureCollectionGeoJSON);
+```
+Output:
+```
+{
+"type": "FeatureCollection",
+"features": [{
+"type": "Feature",
+"geometry": {
+"type": "LineString",
+"coordinates": [
+ [32.123, 24.587],
+ [36.1478, 29.3645]
+]
+},
+"properties": {},
+"id": 2423534545
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "LineString",
+"coordinates": [
+ [47.47, 59.457],
+ [86.3698, 45.10471]
+]
+},
+"properties": {"color": "red"},
+"id": "myFeatureId"
+}]
+}
+```
+
+
 For detailed documentation visit https://ultimategeojson.wordpress.com/
 
 ## Built With
