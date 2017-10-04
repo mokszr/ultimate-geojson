@@ -4,24 +4,24 @@
 
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-- [ultimate-geojson](#)
+- [ultimate-geojson](#ultimate-geojson)
 	- [About GeoJSON](#about-geojson)
 	- [Data Models](#data-models)
 	- [How To Parse GeoJSON](#how-to-parse-geojson)
 	- [How To Build (generate) GeoJSON](#how-to-build-generate-geojson)
-			- [PointBuilder](#)
-			- [LineStringBuilder](#)
-			- [PolygonBuilder](#)
-			- [MultiPointBuilder](#)
-			- [MultiLineStringBuilder](#)
-			- [MultiPolygonBuilder](#)
-			- [GeometryCollectionBuilder](#)
-			- [FeatureBuilder](#)
-			- [FeatureCollectionBuilder](#)
-	- [Built With](#)
-	- [Authors](#)
-	- [License](#)
-	- [Acknowledgments](#)
+			- [PointBuilder](#pointbuilder)
+			- [LineStringBuilder](#linestringbuilder)
+			- [PolygonBuilder](#polygonbuilder)
+			- [MultiPointBuilder](#multipointbuilder)
+			- [MultiLineStringBuilder](#multilinestringbuilder)
+			- [MultiPolygonBuilder](#multipolygonbuilder)
+			- [GeometryCollectionBuilder](#geometrycollectionbuilder)
+			- [FeatureBuilder](#featurebuilder)
+			- [FeatureCollectionBuilder](#featurecollectionbuilder)
+	- [Built With](#built-with)
+	- [Authors](#authors)
+	- [License](#licence)
+	- [Acknowledgments](#acknowledgments)
 
 ## About GeoJSON
 
