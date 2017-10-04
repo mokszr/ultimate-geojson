@@ -2,6 +2,27 @@
 
 **ultimate-geojeson** is the ultimate GeoJSON java library to generate & parse GeoJSON and to do geospatial operations on geometry objects.
 
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [ultimate-geojson](#)
+	- [About GeoJSON](#about-geojson)
+	- [Data Models](#data-models)
+	- [How To Parse GeoJSON](#how-to-parse-geojson)
+	- [How To Build (generate) GeoJSON](#how-to-build-generate-geojson)
+			- [PointBuilder](#)
+			- [LineStringBuilder](#)
+			- [PolygonBuilder](#)
+			- [MultiPointBuilder](#)
+			- [MultiLineStringBuilder](#)
+			- [MultiPolygonBuilder](#)
+			- [GeometryCollectionBuilder](#)
+			- [FeatureBuilder](#)
+			- [FeatureCollectionBuilder](#)
+	- [Built With](#)
+	- [Authors](#)
+	- [License](#)
+	- [Acknowledgments](#)
+
 ## About GeoJSON
 
 [GeoJSON](http://geojson.org/) is a format for encoding a variety of geographic data structures. 
