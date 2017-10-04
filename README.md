@@ -2,7 +2,7 @@
 
 **ultimate-geojeson** is the ultimate GeoJSON java library to generate & parse GeoJSON and to do geospatial operations on geometry objects.
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+**Table of Contents**  
 
 - [ultimate-geojson](#ultimate-geojson)
 	- [About GeoJSON](#about-geojson)
@@ -305,8 +305,6 @@ Output:
 ```
 
 
-For detailed documentation visit https://ultimategeojson.wordpress.com/
-
 ## Built With
 
  * [Maven](https://maven.apache.org/) - Dependency Management
@@ -315,6 +313,7 @@ For detailed documentation visit https://ultimategeojson.wordpress.com/
 ## Authors
 
 * **Murat Öksüzer** - *Initial work* - [mokszr](https://github.com/mokszr)
+([Personel Site: http://www.muratoksuzer.com/](http://www.muratoksuzer.com/))
 
 See also the list of [contributors](https://github.com/mokszr/ultimate-geojson/graphs/contributors) who participated in this project.
 
