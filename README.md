@@ -20,6 +20,7 @@
 	 	- [FeatureCollectionBuilder](#featurecollectionbuilder)
 		- [UltimateGeoJSONBuilder](#ultimategeojsonbuilder)
 	- [How To Generate Circle GeoJSON](#how-to-generate-circle-geojson)
+	- [How To Generate Arc GeoJSON](#how-to-generate-arc-geojson)
 	- [Built With](#built-with)
 	- [Authors](#authors)
 	- [License](#license)
@@ -354,6 +355,23 @@ String geoJSON = UltimateGeoJSONBuilder.getInstance().toGeoJSON(circleAsPolygon)
 You can see the resulting circle on any geojson viewer.
 
 ![generated circle is drawn](https://image.ibb.co/jE77fb/circle_geojson.png)
+
+## How To Generate Arc GeoJSON
+To generate pie slice like arcs, we give center point, starting bearing angle and ending bearing angle in degrees.
+Let's draw an arc of first 45 degrees of the circle we drow above.
+
+```
+CircularDrawingAlgorithmImpl circleDrawer = new CircularDrawingAlgorithmImpl();
+PositionDto center = new PositionDto(35,38);
+List<PositionDto> arcPositions = circleDrawer.getArcPositions(center, 10000, 0, 45);
+		
+UltimateGeoJSONFactory factory = new UltimateGeoJSONFactory();
+PolygonDto polygon = factory.createPolygon(arcPositions);
+		
+String geoJSON = UltimateGeoJSONBuilder.getInstance().toGeoJSON(polygon);
+```
+
+![generates arc is drawn](https://image.ibb.co/geNR6G/arc_geojson.png)
 
 
 ## Built With
