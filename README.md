@@ -19,6 +19,7 @@
 	 	- [FeatureBuilder](#featurebuilder)
 	 	- [FeatureCollectionBuilder](#featurecollectionbuilder)
 		- [UltimateGeoJSONBuilder](#ultimategeojsonbuilder)
+	- [How To Generate Circle GeoJSON](#how-to-generate-circle-geojson)
 	- [Built With](#built-with)
 	- [Authors](#authors)
 	- [License](#license)
@@ -335,6 +336,25 @@ Output:
 }
 
 ```
+## How To Generate Circle GeoJSON
+Circular drawing capabilities are in **ugeojson-math** module.
+You can use `CircularDrawingAlgorithmImpl` class to generate circle points given center point and radius.
+
+For example, Let's generate a circle with 10000 m radius.
+
+```
+CircularDrawingAlgorithmImpl circleDrawer = new CircularDrawingAlgorithmImpl();
+List<PositionDto> circlePoints = circleDrawer.getCirclePositions(new PositionDto(35,38), 10000.0);
+		
+UltimateGeoJSONFactory factory = new UltimateGeoJSONFactory();
+PolygonDto circleAsPolygon = factory.createPolygon(circlePoints);
+
+String geoJSON = UltimateGeoJSONBuilder.getInstance().toGeoJSON(circleAsPolygon);
+```
+You can see the resulting circle on any geojson viewer.
+
+![generated circle is drawn](https://image.ibb.co/jE77fb/circle_geojson.png)
+
 
 ## Built With
 
