@@ -32,6 +32,11 @@
 
 **ultimate-geojeson** uses [The GeoJSON Specification (RFC 7946)](https://tools.ietf.org/html/rfc7946)) for its implementation.
 
+You can test and view results generated GeoJSON strings on following sites:
+* http://geojson.io/
+* http://jsfiddle.net/asnyder14/9dxbcr4f/embedded/result/
+* http://dev.openlayers.org/examples/vector-formats.html
+
 ## Data Models 
 **ultimate-geojeson** represents GeoJSON objects as pojo data transfer objects(Dto). 
 * `PositionDto`
