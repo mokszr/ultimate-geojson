@@ -43,12 +43,19 @@ public class PointDto extends GeometryDto {
 	}
 
 	/**
-	 * Creates point with given position parameters
+	 * Creates point with position parameters of given point 
 	 * 
+	 * @param point
+	 */
+	public PointDto(PointDto point) {
+		this.position = new PositionDto(point.getPosition());
+	}
+
+	/**
 	 * @param position
 	 */
 	public PointDto(PositionDto position) {
-		this.position = new PositionDto(position);
+		 this.position = new PositionDto(position);
 	}
 
 	public double getLongitude() {
