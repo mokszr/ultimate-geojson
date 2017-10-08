@@ -60,9 +60,11 @@ public final class GeoCalculator {
 
 		double lat2Radian = Math.asin(Math.sin(latInRadians) * Math.cos(angularRadius)
 				+ Math.cos(latInRadians) * Math.sin(angularRadius) * Math.cos(bearing));
-		double lon2Radian = lonInRadians
-				+ Math.atan2(Math.sin(bearing) * Math.sin(angularRadius) * Math.cos(latInRadians),
-						Math.cos(angularRadius) - Math.sin(latInRadians) * Math.sin(lat2Radian));
+
+		double dlon = Math.atan2(Math.sin(bearing) * Math.sin(angularRadius) * Math.cos(latInRadians),
+				Math.cos(angularRadius) - Math.sin(latInRadians) * Math.sin(lat2Radian));
+
+		double lon2Radian = (lonInRadians + dlon + Math.PI) % (2 * Math.PI) - Math.PI;
 
 		destination.setLatitude(Math.toDegrees(lat2Radian));
 		destination.setLongitude(Math.toDegrees(lon2Radian));
