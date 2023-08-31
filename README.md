@@ -2,6 +2,8 @@
 
 **ultimate-geojeson** is the ultimate GeoJSON java library to generate & parse GeoJSON and to do geospatial operations on geometry objects.
 
+Conversion from JTS (org.locationtech.jts) to ugeojson DTO model and vice versa is supported now. 
+
 **Table of Contents**  
 
 - [ultimate-geojson](#ultimate-geojson)
@@ -19,7 +21,8 @@
 	 	- [FeatureBuilder](#featurebuilder)
 	 	- [FeatureCollectionBuilder](#featurecollectionbuilder)
 		- [UltimateGeoJSONBuilder](#ultimategeojsonbuilder)
-	- [How To Generate Circle GeoJSON](#how-to-generate-circle-geojson)
+	- [JtsUGeojsonConversionUtil](#jtsugeojsonconversionutil)
+    - [How To Generate Circle GeoJSON](#how-to-generate-circle-geojson)
 	- [How To Generate Arc GeoJSON](#how-to-generate-arc-geojson)
 	- [Built With](#built-with)
 	- [Authors](#authors)
@@ -342,6 +345,39 @@ Output:
 }
 
 ```
+## JtsUGeojsonConversionUtil 
+You can use `JtsUGeojsonConversionUtil` class to convert `org.locationtech.jts.geom.Geometry` objects to ugeojson GeometryDto and vice versa.
+
+Supported JTS geometries to convert
+* `org.locationtech.jts.geom.Coordinate` <--> `PositionDto`
+* `org.locationtech.jts.geom.Point` <--> `PointDto`
+* `org.locationtech.jts.geom.LineString` <--> `LineStringDto`
+* `org.locationtech.jts.geom.Polygon` <--> `PolygonDto`
+* `org.locationtech.jts.geom.MultiPoint` <--> `MultiPointDto`
+* `org.locationtech.jts.geom.MultiLineString` <--> `MultiLineStringDto`
+* `org.locationtech.jts.geom.MultiPolygon` <--> `MultiPolygonDto`
+* `org.ugeojson.model.geometry.GeometryCollectionDto` <--> `GeometryCollectionDto`
+
+`jts-core` artifact of `org.locationtech.jts` group Maven dependency is added as provided type in this library. So, whenever you want to use this conversion util, you need to add that dependency to your project.
+see https://mvnrepository.com/artifact/org.locationtech.jts/jts-core
+
+Example usage
+```
+JtsUGeojsonConversionUtil jtsUGeojsonConversionUtil = new JtsUGeojsonConversionUtil();
+
+// to ugeojson
+PolygonDto polygonDto = jtsUGeojsonConversionUtil.toPolygonDto(someJtsPolygonInstance);
+
+// to JTS
+Polygon jtsPolygon = jtsUGeojsonConversionUtil.toJtsPolygon(polygonDto);
+
+// Generic conversion support
+Geometry jtsGeometry = jtsUGeojsonConversionUtil.toJtsGeometry(polygonDto);
+
+GeometryDto geometryDto = jtsUGeojsonConversionUtil.toGeometryDto(jtsGeometry);
+```
+
+
 ## How To Generate Circle GeoJSON
 Circular drawing capabilities are in **ugeojson-math** module.
 You can use `CircularDrawingAlgorithmImpl` class to generate circle points given center point and radius.
@@ -388,6 +424,7 @@ String geoJSON = UltimateGeoJSONBuilder.getInstance().toGeoJSON(polygon);
 
 * **Murat Öksüzer** - *Initial work* - [mokszr](https://github.com/mokszr)
 ([Personel Site: http://www.muratoksuzer.com/](http://www.muratoksuzer.com/))
+ Youtube Channel: https://www.youtube.com/@muratoksuzer
 
 See also the list of [contributors](https://github.com/mokszr/ultimate-geojson/graphs/contributors) who participated in this project.
 

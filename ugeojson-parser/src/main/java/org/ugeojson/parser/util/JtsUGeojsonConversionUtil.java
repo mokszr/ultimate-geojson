@@ -1,6 +1,8 @@
 package org.ugeojson.parser.util;
 
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.GeometryCollection;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.LinearRing;
@@ -10,6 +12,8 @@ import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 import org.ugeojson.model.PositionDto;
+import org.ugeojson.model.geometry.GeometryCollectionDto;
+import org.ugeojson.model.geometry.GeometryDto;
 import org.ugeojson.model.geometry.LineStringDto;
 import org.ugeojson.model.geometry.MultiLineStringDto;
 import org.ugeojson.model.geometry.MultiPointDto;
@@ -31,6 +35,56 @@ public class JtsUGeojsonConversionUtil {
 
     public JtsUGeojsonConversionUtil(GeometryFactory geometryFactory) {
         this.geometryFactory = geometryFactory;
+    }
+
+    public GeometryDto toGeometryDto(Geometry geometry) {
+        if (geometry instanceof Point) {
+            return toPointDto((Point) geometry);
+        }
+        if (geometry instanceof LineString) {
+            return toLineStringDto((LineString) geometry);
+        }
+        if (geometry instanceof Polygon) {
+            return toPolygonDto((Polygon) geometry);
+        }
+        if (geometry instanceof MultiPoint) {
+            return toMultiPointDto((MultiPoint) geometry);
+        }
+        if (geometry instanceof MultiLineString) {
+            return toMultiLineStringDto((MultiLineString) geometry);
+        }
+        if (geometry instanceof MultiPolygon) {
+            return toMultiPolygonDto((MultiPolygon) geometry);
+        }
+        if (geometry instanceof GeometryCollection) {
+            return toGeometryCollectionDto((GeometryCollection) geometry);
+        }
+        return null;
+    }
+
+    public Geometry toJtsGeometry(GeometryDto dto) {
+        if (dto instanceof PointDto) {
+            return toJtsPoint((PointDto) dto);
+        }
+        if (dto instanceof LineStringDto) {
+            return toJtsLineString((LineStringDto) dto);
+        }
+        if (dto instanceof PolygonDto) {
+            return toJtsPolygon((PolygonDto) dto);
+        }
+        if (dto instanceof MultiPointDto) {
+            return toJtsMultiPoint((MultiPointDto) dto);
+        }
+        if (dto instanceof MultiLineStringDto) {
+            return toJtsMultiLineString((MultiLineStringDto) dto);
+        }
+        if (dto instanceof MultiPolygonDto) {
+            return toJTsMultiPolygon((MultiPolygonDto) dto);
+        }
+        if (dto instanceof GeometryCollectionDto) {
+            return toJtsGeometryCollection((GeometryCollectionDto) dto);
+        }
+        return null;
     }
 
     public Point toJtsPoint(PointDto pointDto) {
@@ -162,7 +216,27 @@ public class JtsUGeojsonConversionUtil {
         return dto;
     }
 
-    private PositionDto toPositionDto(Coordinate coordinate) {
+    public GeometryCollectionDto toGeometryCollectionDto(GeometryCollection geometryCollection) {
+        int numGeometries = geometryCollection.getNumGeometries();
+        List<GeometryDto> geometries = new ArrayList<>();
+        for (int i = 0; i < numGeometries; i++) {
+            Geometry geometryN = geometryCollection.getGeometryN(i);
+            GeometryDto geometryDto = this.toGeometryDto(geometryN);
+            geometries.add(geometryDto);
+        }
+
+        GeometryCollectionDto dto = new GeometryCollectionDto();
+        dto.setGeometries(geometries);
+        return dto;
+    }
+
+    public GeometryCollection toJtsGeometryCollection(GeometryCollectionDto geometryCollectionDto) {
+        List<GeometryDto> geometries = geometryCollectionDto.getGeometries();
+        List<Geometry> jtsGeometries = geometries.stream().map(this::toJtsGeometry).collect(Collectors.toList());
+        return geometryFactory.createGeometryCollection(jtsGeometries.toArray(new Geometry[jtsGeometries.size()]));
+    }
+
+    public PositionDto toPositionDto(Coordinate coordinate) {
         if (Double.isNaN(coordinate.getZ())) {
             return new PositionDto(coordinate.getX(), coordinate.getY());
         } else {
