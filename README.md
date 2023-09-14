@@ -40,6 +40,10 @@ You can test and view results generated GeoJSON strings on following sites:
 * http://jsfiddle.net/asnyder14/9dxbcr4f/embedded/result/
 * http://dev.openlayers.org/examples/vector-formats.html
 
+## Demo of ultimate-geojson Usage
+
+  [![Demo of ultimate-geojson usage](https://img.youtube.com/vi/UuNmwlHDT_E/0.jpg)](https://www.youtube.com/watch?v=UuNmwlHDT_E)
+
 ## Data Models 
 **ultimate-geojeson** represents GeoJSON objects as pojo data transfer objects(Dto). 
 * `PositionDto`
